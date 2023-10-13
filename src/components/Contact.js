@@ -22,7 +22,7 @@ const Contact = () => {
     >
       <Box sx={{ maxWidth: 600, mx: "auto", p: 2 }}>
         <Typography variant="h4" align="center" mb={2}>
-          Contact Us
+          Contact Me
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
