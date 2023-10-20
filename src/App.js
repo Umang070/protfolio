@@ -5,7 +5,8 @@ import { Grid } from "@mui/material";
 import Contact from "./components/Contact";
 import MessagePopupBox from "./helper/MessagePopupBox";
 import NavBar from "./components/NavBar";
-
+import Footer from "./components/Footer";
+import Home from "./components/Home";
 export const PopupContext = createContext();
 function App() {
   const [popup, setPopup] = useState({
@@ -17,18 +18,20 @@ function App() {
   return (
     <BrowserRouter>
       <PopupContext.Provider value={setPopup}>
-        <Grid container direction="column">
+        <Grid container direction="column" className="parent">
           <Grid item>
             <NavBar />
           </Grid>
           <Grid item>
             <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </Grid>
-          {/* <Grid item>
+          <Grid item>
             <Footer />
-          </Grid> */}
+          </Grid>
         </Grid>
       </PopupContext.Provider>
       <MessagePopupBox

@@ -24,6 +24,7 @@ const Contact = () => {
         <Typography variant="h4" align="center" mb={2}>
           Contact Me
         </Typography>
+
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
