@@ -15,9 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+.theme-color {
+  color: white;
+}
 .parent {
-  background: rgb(15, 27, 63) !important;
+  background: #1d2743 !important;
   color: white;
 }
 
@@ -27,7 +29,43 @@ code {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: rgb(15, 27, 63);
+  background: #1d2743;
   color: white;
   text-align: center;
+}
+.logo {
+  font-size: 48px;
+  background: -webkit-linear-gradient(#b7bcc8, #51d7f6);
+  /* #dbd1d1, #e38125 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+}
+
+.contact-form {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 30%;
+  border-color: white;
+}
+form,
+input,
+label {
+  color: white !important;
+  border-color: white;
+}
+
+.project-page {
+  text-align: center;
+  /* padding: 100px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 96vh;
 }

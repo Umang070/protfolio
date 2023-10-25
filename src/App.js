@@ -7,6 +7,7 @@ import MessagePopupBox from "./helper/MessagePopupBox";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
+import Project from "./components/Project";
 export const PopupContext = createContext();
 function App() {
   const [popup, setPopup] = useState({
@@ -27,6 +28,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/project" element={<Project />} />
             </Routes>
           </Grid>
           <Grid item>

@@ -12,8 +12,9 @@ export default function Footer() {
       <Container>
         <Grid container>
           <Grid xs={12} mt={3}>
-            <span>Umang</span>
+            <span className="logo">U</span>
           </Grid>
+
           <Grid xs={12}>
             <Link
               class="no-underline pr-1"
@@ -31,7 +32,7 @@ export default function Footer() {
             </Link>
           </Grid>
         </Grid>
-        <Grid mt={3}>
+        <Grid mt={2}>
           <Typography variant="body2">
             {"©"} {new Date().getFullYear()}{" "}
             <span color="inherit">Umang Patel</span>
