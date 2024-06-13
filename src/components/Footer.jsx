@@ -10,28 +10,6 @@ export default function Footer() {
   return (
     <Box className="footer">
       <Container>
-        <Grid container>
-          <Grid xs={12} mt={3}>
-            <span className="logo">U</span>
-          </Grid>
-
-          <Grid xs={12}>
-            <Link
-              class="no-underline pr-1"
-              href="https://www.linkedin.com/in/umangpatel30/"
-              color="inherit"
-            >
-              LinkedIn
-            </Link>
-            <Link
-              class="no-underline"
-              href="https://github.com/umang070"
-              color="inherit"
-            >
-              Github
-            </Link>
-          </Grid>
-        </Grid>
         <Grid mt={2}>
           <Typography variant="body2">
             {"©"} {new Date().getFullYear()}{" "}

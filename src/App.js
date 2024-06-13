@@ -19,22 +19,22 @@ function App() {
   return (
     <BrowserRouter>
       <PopupContext.Provider value={setPopup}>
-        <Grid container direction="column" className="parent">
-          <Grid item>
+        <div direction="column">
+          <div>
             <NavBar />
-          </Grid>
-          <Grid item>
+          </div>
+          <div>
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/project" element={<Project />} />
             </Routes>
-          </Grid>
-          <Grid item>
+          </div>
+          {/* <div>
             <Footer />
-          </Grid>
-        </Grid>
+          </div> */}
+        </div>
       </PopupContext.Provider>
       <MessagePopupBox
         open={popup.open}

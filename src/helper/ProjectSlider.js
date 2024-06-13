@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import projectImg from "../assets/images/projects.jpg";
+// import youth from "../assets/images/youth-community.jpg"
+import { useState } from "react";
 const useStyles = makeStyles(() => ({
   card: {
     borderRadius: "10px",
@@ -13,18 +15,30 @@ const useStyles = makeStyles(() => ({
   },
 }));
 const ProjectSlider = (props) => {
-  console.log("PROPESS", props);
-  const { title, desc } = props.projectContent;
+  const { title, desc, imgSrc } = props.projectContent;
+  const [shadow, setShadow] = useState(1);
   const classes = useStyles();
+  const onMouseOver = () => {
+    setShadow(3);
+  };
+  const onMouseOut = () => {
+    setShadow(1);
+  };
 
   return (
-    <Card sx={{ maxWidth: 345 }} className={classes.card}>
+    <Card
+      sx={{ maxWidth: 345 }}
+      className={classes.card}
+      // onMouseOver={onMouseOver}
+      // onMouseOut={onMouseOut}
+      // zDepth={shadow}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={projectImg}
-          alt="green iguana"
+          image={imgSrc ? imgSrc : projectImg}
+          alt="project"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
