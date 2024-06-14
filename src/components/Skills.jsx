@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from "react";
+import React, { useContext, useState, useMemo, useRef, useEffect } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import styled from "styled-components";
 // import { CloseOutlined } from "@material-ui/icons";
@@ -103,6 +103,132 @@ const getSkills = () => [
   new Skill("Sequelize", SequelizeLogo, [BACK_END], "https://sequelize.org/"),
 ];
 
+function SkillsComponent({
+  filteredSkills,
+  selectedCategories,
+  onCategoryClick,
+  search,
+  setSearch,
+}) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    let scrollAmount = 0;
+
+    const scrollStep = () => {
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (scrollAmount >= maxScroll) {
+        scrollAmount = 0;
+        container.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        scrollAmount += 1;
+        container.scrollTo({ top: scrollAmount, behavior: "smooth" });
+      }
+    };
+
+    const scrollInterval = setInterval(scrollStep, 40);
+
+    return () => clearInterval(scrollInterval);
+  }, [filteredSkills]);
+  return (
+    <div
+      className={` mb-5 mt-12 md:mt-0 relative md:top-[-30px] bg-gradient-to-b from-black to-gray-800 w-full text-white md:h-screen ${
+        filteredSkills.length >= 4 ? "lg:mt-0" : ""
+      }`}
+    >
+      <div className="max-w-screen-lg p-6 mx-auto flex flex-col justify-center h-full w-full">
+        {" "}
+        <p className="font-lato text-3xl font-semibold text-primary-600 sm:text-4xl">
+          Skills
+        </p>
+        <div className="filter-checkboxes mt-5 mb-5 flex flex-col items-center">
+          <FormGroup row className="text-white justify-center mb-5">
+            {[FRONT_END, BACK_END, MISC].map((value, key) => (
+              <FormControlLabel
+                key={key}
+                control={
+                  <Checkbox
+                    checked={selectedCategories.includes(value)}
+                    color="primary"
+                    onChange={() => onCategoryClick(value)}
+                    name={value}
+                    sx={{ color: "white", "&.Mui-checked": { color: "white" } }}
+                  />
+                }
+                label={value}
+                labelPlacement="top"
+                className="text-white"
+              />
+            ))}
+            <Input
+              placeholder="Search by name"
+              type="text"
+              value={search}
+              name="searchName"
+              onChange={(e) => setSearch(e.target.value)}
+              className="text-white mx-2 mb-2"
+              endAdornment={
+                <InputAdornment position="end">
+                  {search && (
+                    <IconButton onClick={() => setSearch("")}>
+                      <CloseIcon style={{ color: "white" }} />
+                    </IconButton>
+                  )}
+                </InputAdornment>
+              }
+              sx={{
+                color: "white",
+                "& .MuiInputBase-input": { color: "white" },
+                "& .MuiInput-underline:before": { borderBottomColor: "white" },
+              }}
+            />
+          </FormGroup>
+        </div>
+        <div
+          ref={containerRef}
+          className={`skills-container grid gap-5 max-h-72 min-h-[250px] overflow-y-auto overflow-x-hidden rounded-[30px] ${
+            filteredSkills.length >= 4 ? "grid-cols-4" : "grid-cols-2"
+          }  md:${filteredSkills.length >= 4 ? "grid-cols-3" : "grid-cols-2"}`}
+        >
+          {filteredSkills.map((skill) => (
+            <Tooltip arrow placement="top" title={skill.name} key={skill.name}>
+              <img
+                className={`tech-logo object-contain p-5 m-5 rounded-[36px] w-24 h-24 bg-white cursor-help animate-float`}
+                src={skill.logo}
+                alt={skill.name}
+                onClick={() =>
+                  window.open(
+                    skill.website ??
+                      `https://en.wikipedia.org/wiki/${skill.name}`,
+                    "_blank"
+                  )
+                }
+              />
+            </Tooltip>
+          ))}
+        </div>
+      </div>
+      <style jsx>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+      `}</style>
+
+      <br />
+    </div>
+  );
+}
+
 export default function Skills() {
   const skills = getSkills();
 
@@ -138,77 +264,87 @@ export default function Skills() {
     });
   }, [selectedCategories, search, skills]);
 
+  // return (
+  //   <Wrapper
+  //     skillsCount={filteredSkills.length}
+  //     className="language"
+  //     cloudMode="true"
+  //   >
+  //     <p className="font-lato text-3xl font-semibold text-primary-600 sm:text-4xl">
+  //       Skills
+  //     </p>
+
+  //     <div className="filter-checkboxes">
+  //       <FormGroup
+  //         row
+  //         className="text-white"
+  //         style={{ justifyContent: "center", marginBottom: "20px" }}
+  //       >
+  //         {[FRONT_END, BACK_END, MISC].map((value, key) => (
+  //           <FormControlLabel
+  //             key={key}
+  //             control={
+  //               <Checkbox
+  //                 checked={selectedCategories.includes(value)}
+  //                 color="primary"
+  //                 onChange={() => onCategoryClick(value)}
+  //                 name={value}
+  //               />
+  //             }
+  //             label={value}
+  //             labelPlacement="top"
+  //           />
+  //         ))}
+  //         <Input
+  //           placeholder="Search by name"
+  //           type="text"
+  //           value={search}
+  //           name="searchName"
+  //           onChange={(e) => setSearch(e.target.value)}
+  //           endAdornment={
+  //             <InputAdornment>
+  //               {search && (
+  //                 <IconButton onClick={() => setSearch("")}>
+  //                   <CloseIcon />
+  //                 </IconButton>
+  //               )}
+  //             </InputAdornment>
+  //           }
+  //         />
+  //       </FormGroup>
+  //     </div>
+
+  //     <div className="skills-container">
+  //       {filteredSkills.map((skill) => (
+  //         <Tooltip arrow placement="top" title={skill.name} key={skill.name}>
+  //           <img
+  //             className="tech-logo"
+  //             src={skill.logo}
+  //             alt={skill.name}
+  //             onClick={() =>
+  //               window.open(
+  //                 skill.website ??
+  //                   `https://en.wikipedia.org/wiki/${skill.name}`,
+  //                 "_blank"
+  //               )
+  //             }
+  //           />
+  //         </Tooltip>
+  //       ))}
+  //     </div>
+
+  //     <br />
+  //   </Wrapper>
+  // );
+
   return (
-    <Wrapper
-      skillsCount={filteredSkills.length}
-      className="language"
-      cloudMode="true"
-    >
-      <p className="font-lato text-3xl font-semibold text-primary-600 sm:text-4xl">
-        Skills
-      </p>
-
-      <div className="filter-checkboxes">
-        <FormGroup
-          row
-          className="text-white"
-          style={{ justifyContent: "center", marginBottom: "20px" }}
-        >
-          {[FRONT_END, BACK_END, MISC].map((value, key) => (
-            <FormControlLabel
-              key={key}
-              control={
-                <Checkbox
-                  checked={selectedCategories.includes(value)}
-                  color="primary"
-                  onChange={() => onCategoryClick(value)}
-                  name={value}
-                />
-              }
-              label={value}
-              labelPlacement="top"
-            />
-          ))}
-          <Input
-            placeholder="Search by name"
-            type="text"
-            value={search}
-            name="searchName"
-            onChange={(e) => setSearch(e.target.value)}
-            endAdornment={
-              <InputAdornment>
-                {search && (
-                  <IconButton onClick={() => setSearch("")}>
-                    <CloseIcon />
-                  </IconButton>
-                )}
-              </InputAdornment>
-            }
-          />
-        </FormGroup>
-      </div>
-
-      <div className="skills-container">
-        {filteredSkills.map((skill) => (
-          <Tooltip arrow placement="top" title={skill.name} key={skill.name}>
-            <img
-              className="tech-logo"
-              src={skill.logo}
-              alt={skill.name}
-              onClick={() =>
-                window.open(
-                  skill.website ??
-                    `https://en.wikipedia.org/wiki/${skill.name}`,
-                  "_blank"
-                )
-              }
-            />
-          </Tooltip>
-        ))}
-      </div>
-
-      <br />
-    </Wrapper>
+    <SkillsComponent
+      filteredSkills={filteredSkills}
+      selectedCategories={selectedCategories}
+      onCategoryClick={onCategoryClick}
+      search={search}
+      setSearch={setSearch}
+    />
   );
 }
 
