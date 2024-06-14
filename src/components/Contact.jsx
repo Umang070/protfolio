@@ -1,83 +1,137 @@
-import { useState } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
-import { makeStyles, withStyles } from "@mui/styles";
+import React, { useRef, useState } from "react";
+// import emailjs from "@emailjs/browser";
+// components
+import Iconify from "../components/Iconify";
+import SocialLinks from "../helper/SocialMedia.js";
 
-const useStyles = makeStyles((theme) => ({
-  textField: {
-    border: "1px solid white",
-  },
-}));
-const CssTextField = withStyles({
-  root: {
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "white",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "white",
-      },
-      "&:hover fieldset": {
-        borderColor: "white",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "white",
-      },
-    },
-  },
-})(TextField);
+// mock
+import { contactEmail } from "../helper/Constant.js";
 
-const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const classes = useStyles();
-  const handleSubmit = (e) => {
+// ----------------------------------------------------------------------
+
+export default function Contact() {
+  const [isSending, setIsSending] = useState(false);
+
+  const formRef = useRef();
+
+  const sendEmail = async (e) => {
     e.preventDefault();
-    //
+
+    try {
+      setIsSending(true);
+
+      // await emailjs.sendForm(
+      //   process.env.EMAIL_SERVICE_ID,
+      //   process.env.EMAIL_TEMPLATE_ID,
+      //   formRef.current,
+      //   process.env.PUBLIC_KEY
+      // );
+    } catch (error) {
+      // intentional
+    } finally {
+      setIsSending(false);
+    }
   };
-
   return (
-    <div className="contact-page">
-      <div className="contact-form">
-        <Typography variant="h4" align="center" mb={2}>
-          Contact Me
-        </Typography>
-
-        <form onSubmit={handleSubmit} className="theme-color">
-          <CssTextField
-            fullWidth
-            label="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            margin="normal"
-            required
-            inputProps={{ style: { fontFamily: "nunito", color: "white" } }}
-          />
-          <CssTextField
-            fullWidth
-            label="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            margin="normal"
-            required
-            type="email"
-          />
-          <CssTextField
-            fullWidth
-            label="Message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            margin="normal"
-            required
-            multiline
-            rows={4}
-          />
-          <Button variant="contained" type="submit" sx={{ mt: 2 }}>
-            Submit
-          </Button>
+    <section className="contact w-full h-screen bg-gradient-to-b from-black to-gray-800 p-4 text-white mx-auto mt-2 md:mt-0 px-5 pt-10 pb-10">
+      <div className="mb-12 flex w-full flex-col text-center">
+        <h2 className="text-center font-lato text-3xl font-semibold text-primary-700 dark:text-primary-300 sm:text-4xl">
+          Get In Touch
+        </h2>
+        <p className="mx-auto mt-5 text-primary-200 text-base leading-relaxed opacity-80 md:w-1/2">
+          I'm actively looking for any new opportunities, my inbox is always
+          open. Whether you have a question or want to hire me or just want to
+          say hello, send me message. I'd love to hear from you.
+          {/* I'll try my best to get back to you! */}
+        </p>
+      </div>
+      <div className="mx-auto md:w-2/3 lg:w-1/2">
+        <form ref={formRef} onSubmit={sendEmail}>
+          <div className="-m-2 flex flex-wrap">
+            <div className="w-full p-2 sm:w-1/2">
+              <label htmlFor="name" className="mb:1 text-sm leading-7">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                required
+                placeholder="Full Name"
+                name="user_name"
+                className="w-full rounded border border-primary-400/20 bg-primary-300/10 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
+              />
+            </div>
+            <div className="w-full p-2 sm:w-1/2">
+              <label htmlFor="email" className="text-sm leading-7">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="email@example.com"
+                name="user_email"
+                className="w-full rounded border border-primary-400/20 bg-primary-300/10 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
+              />
+            </div>
+            <div className="w-full p-2">
+              <label htmlFor="message" className="text-sm leading-7">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                className="h-32 w-full resize-none rounded border border-primary-400/20 bg-primary-300/10 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
+                defaultValue={"Hello Dhaval,"}
+              />
+            </div>
+            <div className="flex w-full justify-end p-2">
+              <button
+                type="submit"
+                disabled={isSending}
+                className="text-md mb-2 inline-flex w-28 items-center justify-center rounded-lg border bg-primary-300/10 px-1 py-2.5 font-medium text-primary-50 hover:bg-primary-700/50 focus:outline-none focus:ring-2 dark:border-primary-700 dark:bg-primary-500 dark:hover:bg-primary-700 dark:focus:ring-primary-600"
+              >
+                {isSending ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    {" "}
+                    Send
+                    <Iconify classes="ml-2" icon="fluent:send-16-filled" />
+                  </>
+                )}
+              </button>
+            </div>
+            <div className="mt-4 w-full border-t border-neutral-700/50 p-2 pt-6 text-center dark:border-neutral-300/50">
+              <a
+                href={`mailto:${contactEmail}?subject=Inquiry&body=Hello Dhaval`}
+                className="inline-flex items-center space-x-2 hover:text-primary-700 dark:hover:text-primary-300"
+              >
+                <Iconify
+                  classes="text-lg text-primary-500 dark:text-primary-300"
+                  icon="clarity:email-solid"
+                />
+                <span>{contactEmail}</span>
+              </a>
+              <p className="my-5 leading-normal">
+                <Iconify
+                  classes="inline-block text-lg mr-1 text-primary-500 dark:text-primary-300"
+                  icon="bytesize:location"
+                />
+                Montreal
+                <br />
+                Quebec, Canada
+              </p>
+              <div className="flex w-full justify-center">
+                <SocialLinks />
+              </div>
+            </div>
+          </div>
         </form>
       </div>
-    </div>
+    </section>
   );
-};
-export default Contact;
+}
+
+Contact.propTypes = {};

@@ -19,3 +19,22 @@ export const PROJECT_INFO = [
     imgSrc: instagramInsights,
   },
 ];
+export const SOCIAL_LINKS = [
+  {
+    link: "https://twitter.com/dhavalCode",
+    icon: "akar-icons:twitter-fill",
+  },
+  {
+    link: "https://github.com/umang070",
+    icon: "akar-icons:github-fill",
+  },
+  {
+    link: "https://www.linkedin.com/in/umangpatel30/",
+    icon: "akar-icons:linkedin-fill",
+  },
+  // {
+  //   link: "https://leetcode.com/u/Umang3006/",
+  //   icon: "akar-icons:leetcode-fill",
+  // },
+];
+export const contactEmail = "umangpatel3006@gmail.com";

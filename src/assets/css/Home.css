@@ -13,8 +13,8 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -31,17 +31,22 @@
   /*On medium or above screen */
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .profile-picture {
     width: 100%;
   }
-}
+} */
 
 .intro-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100%;
+
+  @media (max-width: 768px) {
+    margin-top: 10rem;
+  }
 }
 .intro-title {
   font-size: 2rem;

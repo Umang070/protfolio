@@ -15,27 +15,7 @@
   color: white;
   text-align: center;
 }
-.logo {
-  font-size: 48px;
-  background: -webkit-linear-gradient(#b7bcc8, #51d7f6);
-  /* #dbd1d1, #e38125 */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
-.contact-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 95vh;
-}
-
-.contact-form {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 30%;
-  border-color: white;
-}
 form,
 input,
 label {
@@ -79,7 +59,6 @@ body {
   }
 
   .about,
-  .contact,
   .portfolio,
   .experience,
   .home {
@@ -87,22 +66,13 @@ body {
     height: 100%;
   }
 
-  .about,
   .portfolio,
   .experience {
-    margin-top: 10%;
+    margin-top: 5%;
   }
 
   .home img {
     margin-top: 25%;
-  }
-
-  .small-screen {
-    display: block;
-  }
-
-  .big-screen {
-    display: none;
   }
 
   .gap-8 {
@@ -110,14 +80,14 @@ body {
   }
 
   .home h2 {
-    font-size: 2.25rem;
+    /* font-size: 2.25rem; */
     line-height: 3rem;
     margin-top: 7%;
   }
 
-  .portfolio-btn {
+  /* .portfolio-btn {
     margin: auto;
-  }
+  } */
 
   .px-12 {
     padding-left: 1rem;
@@ -134,4 +104,107 @@ body {
   .typewriter {
     margin-top: 4%;
   }
+}
+.bg-standard {
+  background-color: rgb(34 69 113 / 20%);
+}
+
+.border-standard {
+  border-color: rgb(83 105 118 / 70%);
+}
+
+*,
+:after,
+:before {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
 }

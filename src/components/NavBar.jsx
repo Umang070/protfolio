@@ -29,6 +29,8 @@ const NavBar = (props) => {
     },
   ];
 
+  const logo = "<UmangPatel/>";
+
   return (
     <div className="navbar">
       <h1 className="heading">
@@ -37,7 +39,7 @@ const NavBar = (props) => {
           href="/home"
           target="_blank"
         >
-          Umang
+          {logo}
         </a>
       </h1>
       <ul className="nav-list">
