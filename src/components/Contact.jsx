@@ -83,7 +83,7 @@ export default function Contact() {
                 name="message"
                 required
                 className="h-32 w-full resize-none rounded border border-primary-400/20 bg-primary-300/10 py-1 px-3 text-base leading-8 outline-none transition-colors duration-200 ease-in-out focus:ring-1 focus:ring-primary-700/70 dark:border-primary-300/50 dark:bg-primary-300/10 dark:focus:ring-primary-300/50"
-                defaultValue={"Hello Dhaval,"}
+                defaultValue={"Hello Umang,"}
               />
             </div>
             <div className="flex w-full justify-end p-2">

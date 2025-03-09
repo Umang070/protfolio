@@ -31,9 +31,11 @@ export default function Home() {
             <Type />
           </div>
           <p className="text-gray-500 py-4 max-w-md">
-            I have 2 years of experience building websites and desgining
-            software. I love to work on web application using technologies like
-            React, Tailwind, Next JS and GraphQL.
+            I am an enthusiastic software developer passionate about building
+            user-centric products and exploring new technologies. With
+            experience in AI-driven solutions, real-time systems, and diverse
+            tech stacks, I thrive on tackling challenges and delivering
+            impactful projects.
           </p>
           <div className="flex w-full py-2">
             <button
